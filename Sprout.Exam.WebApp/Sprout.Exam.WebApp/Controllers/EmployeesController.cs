@@ -157,7 +157,6 @@ namespace Sprout.Exam.WebApp.Controllers
                 default: break;
 
             }
-            decimal result = factory.GetFinalSalary().FinalSalary;
             return Ok(await Task.FromResult(factory.GetFinalSalary().FinalSalary));
 
         }
