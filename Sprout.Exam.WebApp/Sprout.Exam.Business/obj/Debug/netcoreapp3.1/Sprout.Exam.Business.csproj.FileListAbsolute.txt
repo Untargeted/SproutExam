@@ -23,3 +23,16 @@ D:\Downloads\Exam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.
 D:\Downloads\Exam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.csproj.CopyComplete
 D:\Downloads\Exam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.dll
 D:\Downloads\Exam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.pdb
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\bin\Debug\netcoreapp3.1\Sprout.Exam.Business.deps.json
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\bin\Debug\netcoreapp3.1\Sprout.Exam.Business.dll
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\bin\Debug\netcoreapp3.1\Sprout.Exam.Business.pdb
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\bin\Debug\netcoreapp3.1\Sprout.Exam.Common.dll
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\bin\Debug\netcoreapp3.1\Sprout.Exam.Common.pdb
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.csproj.AssemblyReference.cache
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.AssemblyInfoInputs.cache
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.AssemblyInfo.cs
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.csproj.CoreCompileInputs.cache
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.csproj.CopyComplete
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.dll
+D:\Downloads\Exam\Git Repo\SproutExam\Sprout.Exam.WebApp\Sprout.Exam.Business\obj\Debug\netcoreapp3.1\Sprout.Exam.Business.pdb

@@ -16,7 +16,7 @@ namespace Sprout.Exam.WebApp
                 FullName = "Jane Doe",
                 Id = 1,
                 Tin = "123215413",
-                TypeId = 1
+                EmployeeTypeId = 1
             },
             new EmployeeDto
             {
@@ -24,7 +24,7 @@ namespace Sprout.Exam.WebApp
                 FullName = "John Doe",
                 Id = 2,
                 Tin = "957125412",
-                TypeId = 2
+                EmployeeTypeId = 2
             }
         };
     }

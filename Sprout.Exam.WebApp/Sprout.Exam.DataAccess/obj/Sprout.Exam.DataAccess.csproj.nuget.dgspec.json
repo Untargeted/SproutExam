@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj": {}
+    "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj": {}
   },
   "projects": {
-    "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj": {
+    "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj",
+        "projectUniqueName": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj",
         "projectName": "Sprout.Exam.DataAccess",
-        "projectPath": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj",
+        "projectPath": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\Sprout.Exam.DataAccess.csproj",
         "packagesPath": "C:\\Users\\COM02431user\\.nuget\\packages\\",
-        "outputPath": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\obj\\",
+        "outputPath": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\COM02431user\\AppData\\Roaming\\NuGet\\NuGet.Config",

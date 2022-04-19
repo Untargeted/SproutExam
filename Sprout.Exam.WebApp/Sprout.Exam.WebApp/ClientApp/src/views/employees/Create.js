@@ -6,7 +6,7 @@ export class EmployeeCreate extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { fullName: '',birthdate: '',tin: '',typeId: 1, loading: false,loadingSave:false };
+      this.state = { fullName: '', birthdate: '', tin: '', employeeTypeId: 1, loading: false,loadingSave:false };
   }
 
   componentDidMount() {
@@ -46,7 +46,7 @@ export class EmployeeCreate extends Component {
 </div>
 <div className='form-group col-md-6'>
   <label htmlFor='inputEmployeeType4'>Employee Type: *</label>
-  <select id='inputEmployeeType4' onChange={this.handleChange.bind(this)} value={this.state.typeId}  name="typeId" className='form-control'>
+    <select id='inputEmployeeType4' onChange={this.handleChange.bind(this)} value={this.state.employeeTypeId} name="employeeTypeId" className='form-control'>
     <option value='1'>Regular</option>
     <option value='2'>Contractual</option>
   </select>

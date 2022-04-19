@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj": {}
+    "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj": {}
   },
   "projects": {
-    "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj": {
+    "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj",
+        "projectUniqueName": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj",
         "projectName": "Sprout.Exam.Business",
-        "projectPath": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj",
+        "projectPath": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\Sprout.Exam.Business.csproj",
         "packagesPath": "C:\\Users\\COM02431user\\.nuget\\packages\\",
-        "outputPath": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\obj\\",
+        "outputPath": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\COM02431user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj": {
-                "projectPath": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj"
+              "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj": {
+                "projectPath": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj"
               }
             }
           }
@@ -62,14 +62,14 @@
         }
       }
     },
-    "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj": {
+    "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj",
+        "projectUniqueName": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj",
         "projectName": "Sprout.Exam.Common",
-        "projectPath": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj",
+        "projectPath": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\Sprout.Exam.Common.csproj",
         "packagesPath": "C:\\Users\\COM02431user\\.nuget\\packages\\",
-        "outputPath": "D:\\Downloads\\Exam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\obj\\",
+        "outputPath": "D:\\Downloads\\Exam\\Git Repo\\SproutExam\\Sprout.Exam.WebApp\\Sprout.Exam.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\COM02431user\\AppData\\Roaming\\NuGet\\NuGet.Config",

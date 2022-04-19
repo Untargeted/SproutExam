@@ -6,7 +6,7 @@ export class EmployeeCalculate extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { id: 0,fullName: '',birthdate: '',tin: '',typeId: 1,absentDays: 0,workedDays: 0,netIncome: 0, loading: true,loadingCalculate:false };
+    this.state = { id: 0, fullName: '', birthdate: '', tin: '', employeeTypeId: 1,absentDays: 0,workedDays: 0,netIncome: 0, loading: true,loadingCalculate:false };
   }
 
   componentDidMount() {
@@ -48,11 +48,11 @@ export class EmployeeCalculate extends Component {
 
 <div className="form-row">
 <div className='form-group col-md-12'>
-  <label>Employee Type: <b>{this.state.typeId === 1?"Regular": "Contractual"}</b></label>
+                        <label>Employee Type: <b>{this.state.employeeTypeId === 1?"Regular": "Contractual"}</b></label>
 </div>
 </div>
 
-{ this.state.typeId === 1?
+                {this.state.employeeTypeId === 1?
  <div className="form-row">
      <div className='form-group col-md-12'><label>Salary: 20000 </label></div>
      <div className='form-group col-md-12'><label>Tax: 12% </label></div>
@@ -62,14 +62,14 @@ export class EmployeeCalculate extends Component {
 
 <div className="form-row">
 
-{ this.state.typeId === 1? 
+                    {this.state.employeeTypeId === 1?
 <div className='form-group col-md-6'>
   <label htmlFor='inputAbsentDays4'>Absent Days: </label>
-  <input type='text' className='form-control' id='inputAbsentDays4' onChange={this.handleChange.bind(this)} value={this.state.absentDays} name="absentDays" placeholder='Absent Days' />
+    <input type='number' className='form-control' id='inputAbsentDays4' onChange={this.handleChange.bind(this)} value={this.state.absentDays} name="absentDays" placeholder='Absent Days' />
 </div> :
 <div className='form-group col-md-6'>
   <label htmlFor='inputWorkDays4'>Worked Days: </label>
-  <input type='text' className='form-control' id='inputWorkDays4' onChange={this.handleChange.bind(this)} value={this.state.workedDays} name="workedDays" placeholder='Worked Days' />
+  <input type='number' className='form-control' id='inputWorkDays4' onChange={this.handleChange.bind(this)} value={this.state.workedDays} name="workedDays" placeholder='Worked Days' />
 </div>
 }
 </div>
@@ -101,10 +101,11 @@ export class EmployeeCalculate extends Component {
     const requestOptions = {
         method: 'POST',
         headers: !token ? {} : { 'Authorization': `Bearer ${token}`,'Content-Type': 'application/json' },
-        body: JSON.stringify({id: this.state.id,absentDays: this.state.absentDays,workedDays: this.state.workedDays})
+        body: JSON.stringify(this.state)
     };
     const response = await fetch('api/employees/' + this.state.id + '/calculate',requestOptions);
-    const data = await response.json();
+      const data = await response.json();
+      console.log(data);
     this.setState({ loadingCalculate: false,netIncome: data });
   }
 
@@ -117,7 +118,7 @@ export class EmployeeCalculate extends Component {
 
     if(response.status === 200){
         const data = await response.json();
-        this.setState({ id: data.id,fullName: data.fullName,birthdate: data.birthdate,tin: data.tin,typeId: data.typeId, loading: false,loadingCalculate: false });
+        this.setState({ id: data.id, fullName: data.fullName, birthdate: data.birthdate, tin: data.tin, employeeTypeId: data.employeeTypeId, loading: false,loadingCalculate: false });
     }
     else{
         alert("There was an error occured.");

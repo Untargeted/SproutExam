@@ -11,5 +11,6 @@ namespace Sprout.Exam.DataAccess.Interface
         List<T> ExecStoredProcReturnListNoParam<T>(string StoredProc);
         bool ExecStoredProcWithParam(DynamicParameters param, string StoredProc);
         List<T> ExecStoredProcReturnListWithParam<T>(DynamicParameters param, string StoredProc);
+        int ExecStoredProcReturnINT(string StoredProc);
     }
 }

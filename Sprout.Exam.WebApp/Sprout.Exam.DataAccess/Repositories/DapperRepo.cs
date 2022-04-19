@@ -8,15 +8,16 @@ using Sprout.Exam.DataAccess.Interface;
 
 namespace Sprout.Exam.DataAccess.Repositories
 {
-    public class DapperRepo: IDapperClass
+    public class DapperRepo : IDapperClass
     {
         private readonly IConfiguration config_;
         private SqlConnection con;
-        public DapperRepo()
+        public DapperRepo(IConfiguration config)
         {
+            config_ = config;
             con = new SqlConnection(config_.GetConnectionString("DefaultConnection"));
         }
-        #region Stored Procedures
+        #region For Stored Procedures
         public bool ExecStoredProcNoParam(string StoredProc)
         {
             try
@@ -59,7 +60,7 @@ namespace Sprout.Exam.DataAccess.Repositories
             {
                 con.Open();
 
-                con.Query(StoredProc, param, commandType: CommandType.StoredProcedure);
+                int res = con.Execute(StoredProc, param, commandType: CommandType.StoredProcedure);
 
                 con.Close();
 
@@ -83,9 +84,27 @@ namespace Sprout.Exam.DataAccess.Repositories
 
                 return (List<T>)res;
             }
-            catch
+            catch(Exception e)
             {
                 throw;
+            }
+
+        }
+        public int ExecStoredProcReturnINT(string StoredProc)
+        {
+            try
+            { 
+                con.Open();
+
+                var res = con.ExecuteScalar<int>(StoredProc, commandType: CommandType.StoredProcedure);
+
+                con.Close();
+
+                return (int)res;
+            }
+            catch (Exception ex)
+            {
+                return -1;
             }
 
         }

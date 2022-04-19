@@ -11,7 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sprout.Exam.WebApp.Data;
 using Sprout.Exam.WebApp.Models;
-
+using Sprout.Exam.DataAccess.Interface;
+using Sprout.Exam.DataAccess.Repositories;
 namespace Sprout.Exam.WebApp
 {
     public class Startup
@@ -26,6 +27,8 @@ namespace Sprout.Exam.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddScoped<IDapperClass, DapperRepo>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

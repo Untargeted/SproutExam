@@ -31,7 +31,7 @@ export class EmployeesIndex extends Component {
               <td>{employee.fullName}</td>
               <td>{employee.birthdate}</td>
               <td>{employee.tin}</td>
-              <td>{employee.typeId === 1?"Regular":"Contractual"}</td>
+              <td>{employee.employeeTypeId === 1?"Regular":"Contractual"}</td>
               <td>
               <button type='button' className='btn btn-info mr-2' onClick={() => parent.props.history.push("/employees/" + employee.id + "/edit")} >Edit</button>
               <button type='button' className='btn btn-primary mr-2' onClick={() => parent.props.history.push("/employees/" + employee.id + "/calculate")}>Calculate</button>
@@ -62,14 +62,15 @@ export class EmployeesIndex extends Component {
     );
   }
 
-  async populateEmployeeData() {
-    const token = await authService.getAccessToken();
-    const response = await fetch('api/employees', {
-      headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
-    });
-    const data = await response.json();
-    this.setState({ employees: data, loading: false });
-  }
+    async populateEmployeeData() {
+        const token = await authService.getAccessToken();
+        const response = await fetch('api/employees', {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await response.json();
+        console.log(data);
+        this.setState({ employees: data, loading: false });
+    }
 
   async deleteEmployee(id) {
     const token = await authService.getAccessToken();

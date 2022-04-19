@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Sprout.Exam.Business.DataTransferObjects;
 using Sprout.Exam.Common.Enums;
+using Microsoft.Extensions.Configuration;
+using Sprout.Exam.DataAccess.Interface;
+using Dapper;
+using Sprout.Exam.DataAccess;
+using Sprout.Exam.DataAccess.CalculateFactory;
 
 namespace Sprout.Exam.WebApp.Controllers
 {
@@ -15,7 +20,11 @@ namespace Sprout.Exam.WebApp.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-
+        private readonly IDapperClass dapr;
+        public EmployeesController(IDapperClass dapr_)
+        {
+            dapr = dapr_;
+        }
         /// <summary>
         /// Refactor this method to go through proper layers and fetch from the DB.
         /// </summary>
@@ -23,7 +32,15 @@ namespace Sprout.Exam.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await Task.FromResult(StaticEmployees.ResultList);
+            //Setting up Parameters
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@Code", "GetAll");
+
+            List<EmployeeDto> res = dapr.ExecStoredProcReturnListWithParam<EmployeeDto>(param, "EmployeeQueries");
+            //Formatting Birth Date
+            res.ToList().ForEach(x => x.Birthdate = Convert.ToDateTime(x.Birthdate).ToString("yyyy-MM-dd"));
+
+            var result = await Task.FromResult(res);
             return Ok(result);
         }
 
@@ -34,7 +51,15 @@ namespace Sprout.Exam.WebApp.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await Task.FromResult(StaticEmployees.ResultList.FirstOrDefault(m => m.Id == id));
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@Code", "GetByID");
+            param.Add("@Id", id);
+
+            List<EmployeeDto> res = dapr.ExecStoredProcReturnListWithParam<EmployeeDto>(param, "EmployeeQueries");
+            //Re-formatting Date
+            res[0].Birthdate = Convert.ToDateTime(res[0].Birthdate).ToString("yyyy-MM-dd");
+
+            var result = await Task.FromResult(res[0]);
             return Ok(result);
         }
 
@@ -45,13 +70,18 @@ namespace Sprout.Exam.WebApp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(EditEmployeeDto input)
         {
-            var item = await Task.FromResult(StaticEmployees.ResultList.FirstOrDefault(m => m.Id == input.Id));
-            if (item == null) return NotFound();
-            item.FullName = input.FullName;
-            item.Tin = input.Tin;
-            item.Birthdate = input.Birthdate.ToString("yyyy-MM-dd");
-            item.TypeId = input.TypeId;
-            return Ok(item);
+
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@Code", "Update");
+            param.Add("@Id", input.Id);
+            param.Add("@FullName", input.FullName);
+            param.Add("@Birthdate", input.Birthdate.ToString("yyyy-MM-dd"));
+            param.Add("@TIN", input.Tin);
+            param.Add("@EmployeeTypeId", input.EmployeeTypeId);
+
+            var res = await Task.FromResult(dapr.ExecStoredProcWithParam(param, "EmployeeQueries"));
+
+            return Ok(res);
         }
 
         /// <summary>
@@ -61,19 +91,18 @@ namespace Sprout.Exam.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateEmployeeDto input)
         {
+            int ID = await Task.FromResult(dapr.ExecStoredProcReturnINT("GetLastID"));
 
-           var id = await Task.FromResult(StaticEmployees.ResultList.Max(m => m.Id) + 1);
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@Code", "Insert");
+            param.Add("@FullName", input.FullName);
+            param.Add("@Birthdate", input.Birthdate.ToString("yyyy-MM-dd"));
+            param.Add("@TIN", input.Tin);
+            param.Add("@EmployeeTypeId", input.EmployeeTypeId);
 
-            StaticEmployees.ResultList.Add(new EmployeeDto
-            {
-                Birthdate = input.Birthdate.ToString("yyyy-MM-dd"),
-                FullName = input.FullName,
-                Id = id,
-                Tin = input.Tin,
-                TypeId = input.TypeId
-            });
+            dapr.ExecStoredProcWithParam(param, "EmployeeQueries");
 
-            return Created($"/api/employees/{id}", id);
+            return Created($"/api/employees/{ID}", ID);
         }
 
 
@@ -84,9 +113,13 @@ namespace Sprout.Exam.WebApp.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await Task.FromResult(StaticEmployees.ResultList.FirstOrDefault(m => m.Id == id));
-            if (result == null) return NotFound();
-            StaticEmployees.ResultList.RemoveAll(m => m.Id == id);
+
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@Code", "Delete");
+            param.Add("@Id", id);
+
+            var res = await Task.FromResult(dapr.ExecStoredProcWithParam(param, "EmployeeQueries"));
+
             return Ok(id);
         }
 
@@ -98,22 +131,34 @@ namespace Sprout.Exam.WebApp.Controllers
         /// <param name="workedDays"></param>
         /// <returns></returns>
         [HttpPost("{id}/calculate")]
-        public async Task<IActionResult> Calculate(int id,decimal absentDays,decimal workedDays)
+        public async Task<IActionResult> Calculate(CalculateEmployeeDto input)
         {
-            var result = await Task.FromResult(StaticEmployees.ResultList.FirstOrDefault(m => m.Id == id));
+            CalculateFactory factory = null;
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@Code", "GetByID");
+            param.Add("@Id", input.Id);
 
-            if (result == null) return NotFound();
-            var type = (EmployeeType) result.TypeId;
-            return type switch
+            EmployeeDto res = await Task.FromResult(dapr.ExecStoredProcReturnListWithParam<EmployeeDto>(param, "EmployeeQueries")[0]);
+
+            if (res == null) return NotFound();
+
+            var type = (EmployeeType) res.EmployeeTypeId;
+
+            switch (type)
             {
-                EmployeeType.Regular =>
+                case EmployeeType.Regular:
                     //create computation for regular.
-                    Ok(25000),
-                EmployeeType.Contractual =>
+                    factory = new RegularFactory(input.absentDays);
+                    break;
+                case EmployeeType.Contractual:
                     //create computation for contractual.
-                    Ok(20000),
-                _ => NotFound("Employee Type not found")
-            };
+                    factory = new ContractualFactory(input.workedDays);
+                    break;
+                default: break;
+
+            }
+            decimal result = factory.GetFinalSalary().FinalSalary;
+            return Ok(await Task.FromResult(factory.GetFinalSalary().FinalSalary));
 
         }
 
